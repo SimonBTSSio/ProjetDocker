@@ -1,25 +1,26 @@
-version: '2'
+version: '3'
 
 services:
-    web:
-        image: lavoweb/php-5.6
-        ports:
-            - "80:80"
-        volumes:
-            - ./app/index.php:/var/www/html
-        links:
-            - db:db
+    app:
+      build: .
+      ports:
+        - "80:80"
+      volumes:
+        - ./app:/var/www/html
+      links:
+        - db
     db:
         image: mysql:5.5
+        command: --init-file /var/lib/mysql/db.sql
         volumes:
-            - ~/mysql:/var/lib/mysql
+          - ./dump/db.sql:/var/lib/mysql/db.sql
         ports:
             - "3307:3306"
         environment:
             - MYSQL_ROOT_PASSWORD=root
-    myadmin:
-        image: phpmyadmin/phpmyadmin
-        ports:
-            - "8080:80"
-        links:
-            - db:db
+#    myadmin:
+#        image: phpmyadmin/phpmyadmin
+#        ports:
+#            - "8080:80"
+#        links:
+#            - db:db
