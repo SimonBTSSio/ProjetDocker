@@ -6,20 +6,21 @@ services:
         ports:
             - "80:80"
         volumes:
-            - ./app/index.php:/var/www/html
+            - ./app:/var/www/html
         links:
             - db:db
     db:
         image: mysql:5.5
+        command: --init-file /var/lib/mysql/db.sql
         volumes:
-            - ~/mysql:/var/lib/mysql
+          - ./dump/db.sql:/var/lib/mysql/db.sql
         ports:
             - "3307:3306"
         environment:
             - MYSQL_ROOT_PASSWORD=root
-    myadmin:
-        image: phpmyadmin/phpmyadmin
-        ports:
-            - "8080:80"
-        links:
-            - db:db
+#    myadmin:
+#        image: phpmyadmin/phpmyadmin
+#        ports:
+#            - "8080:80"
+#        links:
+#            - db:db
