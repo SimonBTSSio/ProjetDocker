@@ -1,14 +1,14 @@
-version: '2'
+version: '3'
 
 services:
-    web:
-        image: lavoweb/php-5.6
-        ports:
-            - "80:80"
-        volumes:
-            - ./app:/var/www/html
-        links:
-            - db:db
+    app:
+      build: .
+      ports:
+        - "80:80"
+      volumes:
+        - ./app:/var/www/html
+      links:
+        - db
     db:
         image: mysql:5.5
         command: --init-file /var/lib/mysql/db.sql
