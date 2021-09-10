@@ -4,20 +4,12 @@
 	</head>
 	<body>
 		<h1>Formulaire</h1>
-		<form method="post" action="index.php">
- 
-		<p>
-			
-		
-			<input type="text" name="pseudo" />	
-		
-			<input type="password" name="mdp" />
-
+		<form method="post" action="Index.php">
+			<input type="text" name="nom" placeholder="nom" /><br />
+			<input type="text" name="prenom" placeholder="prenom" /><br />
+			<input type="text" name="pseudo" placeholder="pseudo" /><br />
+			<input type="password" name="mdp" placeholder="mot de passe" /><br />
 			<input type="submit" value="Valider" />
-
-		</p>
-
- 
 		</form>
 	</body>
 </html>

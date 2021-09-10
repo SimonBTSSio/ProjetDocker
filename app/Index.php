@@ -5,6 +5,16 @@
 	</head>
 	<body>
 		<?php
+			if($_POST['mdp'] != null && $_POST['pseudo'] != null && $_POST['nom'] != null && $_POST['prenom']){
+				$pdo = new PDO('mysql:host=db;dbname=siteWeb', 'root', 'root' );
+				$id = $pdo->query('select max(id) from user');
+				$data = $id->fetch();
+				$idI = (int)$data[0] + 1;
+				$sql = "INSERT INTO user VALUES (?,?,?,?,md5(?))";
+				$pdo->prepare($sql)->execute([$idI,$_POST['pseudo'],$_POST['nom'],$_POST['prenom'],$_POST['mdp']]);
+			}
+		?>
+		<?php
 			try{
 				$dbh = new PDO('mysql:host=db;dbname=siteWeb', 'root', 'root' );
 			}
