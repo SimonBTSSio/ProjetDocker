@@ -6,7 +6,7 @@
 		<h1>Formulaire</h1>
 		<form method="post" action="index.php">
  
-		<p>
+		<
 			
 		
 			<input type="text" name="pseudo" />	
@@ -15,7 +15,7 @@
 
 			<input type="submit" value="Valider" />
 
-		</p>
+			
 
  
 		</form>
